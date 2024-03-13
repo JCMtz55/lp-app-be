@@ -2,7 +2,6 @@ from flask import Flask
 import os
 from src.config.config import Config
 from dotenv import load_dotenv
-from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
 
 # loading environment variables

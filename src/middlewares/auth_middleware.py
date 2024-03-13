@@ -38,7 +38,6 @@ def token_required(f):
         except Exception as e:
             return {
                 "message": "Something went wrong",
-                "data": token,
                 "error": str(e)
             }, 500
 
