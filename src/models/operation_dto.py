@@ -15,7 +15,7 @@ class OperationRequest:
                         raise
                 if "num2" in d:
                     if type(d["num2"]) is int:
-                        self.num1 = d["num2"]
+                        self.num2 = d["num2"]
                     else:
                         raise Exception("Invalid Number")
             except:

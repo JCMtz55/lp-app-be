@@ -1,7 +1,7 @@
 import os
 from pathlib import Path 
 
-PROJECT_NAME = "lp-backend" #add your project name here
+PROJECT_NAME = "lp-backend"
 
 LIST_FILES = [
     "Dockerfile",
