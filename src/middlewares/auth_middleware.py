@@ -3,9 +3,9 @@ from flask import request
 import os
 import cognitojwt
 
-AWS_REGION = os.environ.get("AWS_REGION")
-AWS_COGNITO_POOL_ID = os.environ.get("AWS_COGNITO_POOL_ID")
-AWS_COGNITO_CLIENT_ID = os.environ.get("AWS_COGNITO_CLIENT_ID")
+AWS_REGION = os.environ.get("REGION")
+AWS_COGNITO_POOL_ID = os.environ.get("COGNITO_POOL_ID")
+AWS_COGNITO_CLIENT_ID = os.environ.get("COGNITO_CLIENT_ID")
 
 
 def token_required(f):
