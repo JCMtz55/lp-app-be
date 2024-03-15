@@ -1,17 +1,25 @@
 import requests
 from math import sqrt
 from src.models.operation_model import Operation, OperationType
-from src.models.operation_dto import OperationRequest
+from src.dtos.operation_dto import OperationRequest
 
 
 def get_operation(operation_type: str):
-    operation = Operation.query.filter_by(type = operation_type).first()
+    operation = Operation.query.filter_by(type=operation_type).first()
     return operation
+
+
+def get_operations():
+    result = []
+    operations = Operation.query.all()
+    for operation in operations:
+        result.append(operation.serialize())
+    return result
 
 
 def handle_operation(operation_req: OperationRequest):
     res = 0
-    if operation_req is not None and Operation.valid_type(operation_req.type):
+    if Operation.valid_type(operation_req.type):
         match operation_req.type:
             case OperationType.ADDITION:
                 res = addition(operation_req.num1, operation_req.num2)
@@ -53,7 +61,7 @@ def square_root(num: int):
         val = sqrt(num)
         return val
     except:
-        raise Exception(f'Cannot calculate square root of a negative number', 500)
+        raise Exception('Cannot calculate square root of a negative number', 500)
 
 
 def random_string():

@@ -10,20 +10,24 @@ class Record(db.Model):
     amount: int = db.Column(db.Integer, nullable=False)
     user_balance: int = db.Column(db.Integer, nullable=False)
     operation_response: str = db.Column(db.String(50))
-    created_at: datetime = db.Column(db.DateTime(), default=datetime.now(timezone.utc))
-    is_deleted: bool = db.Column(db.Boolean, default=False)
+    created_at: datetime = db.Column(db.DateTime())
+    is_deleted: bool = db.Column(db.Boolean)
 
-    def __init__(self, operation_id: int, user_id: str, amount: int, user_balance: int, operation_response: str):
+    def __init__(self, operation_id: int, user_id: str, amount: int, user_balance: int, operation_response: str,
+                 created_at: datetime, is_deleted: bool = False) -> None:
         self.operation_id = operation_id
         self.user_id = user_id
         self.amount = amount
         self.user_balance = user_balance
         self.operation_response = operation_response
+        self.is_deleted = is_deleted
+        self.created_at = created_at
 
     def serialize(self):
         return {
             "id": self.id,
             "operation_id": self.operation_id,
+            "operation_name": self.operation_id,
             "user_id": self.user_id,
             "amount": self.amount,
             "user_balance": self.user_balance,

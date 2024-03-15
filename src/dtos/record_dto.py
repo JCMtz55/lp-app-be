@@ -1,3 +1,6 @@
+from typing import List
+
+
 class RecordRequest:
     limit: int
     page: int

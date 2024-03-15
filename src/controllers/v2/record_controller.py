@@ -1,9 +1,6 @@
-from flask import request, jsonify, Blueprint
+from flask import jsonify, Blueprint
 
 from src.middlewares.auth_middleware import token_required
-from src.services.record_service import insert_record, get_user_records
-from src.models.operation_dto import OperationRequest
-from src.models.record_dto import RecordRequest
 
 record = Blueprint("record", __name__)
 

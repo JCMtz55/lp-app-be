@@ -9,6 +9,12 @@ class Operation(db.Model):
     type: str = db.Column(db.String(50), nullable=False)
     cost: int = db.Column(db.Integer, nullable=False)
 
+    def __init__(self, id: int, name: str, type: str, cost: int):
+        self.id = id
+        self.name = name
+        self.type = type
+        self.cost = cost
+
     @classmethod
     def valid_type(cls, type: str):
         try:
@@ -16,7 +22,15 @@ class Operation(db.Model):
         except ValueError:
             raise Exception("Invalid operation type")
         return True
-    
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "type": self.type,
+            "cost": self.cost
+        }
+
 
 class OperationType(StrEnum):
     ADDITION = "addition",
@@ -25,4 +39,3 @@ class OperationType(StrEnum):
     DIVISION = "division",
     SQUARE_ROOT = "square_root",
     RANDOM_STRING = "random_string",
-
