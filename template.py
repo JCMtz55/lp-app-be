@@ -7,7 +7,7 @@ LIST_FILES = [
     "Dockerfile",
     ".env",
     ".gitignore",
-    "app.py",
+    "application.py",
     "init_setup.py",
     "README.md",
     "requirements.txt",
